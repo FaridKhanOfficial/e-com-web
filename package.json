@@ -1,0 +1,29 @@
+{
+  "name": "e-com-web",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/FaridKhanOfficial/e-com-web#readme",
+  "bugs": {
+    "url": "https://github.com/FaridKhanOfficial/e-com-web/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FaridKhanOfficial/e-com-web.git"
+  },
+  "license": "ISC",
+  "author": "Farid Khan",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}
