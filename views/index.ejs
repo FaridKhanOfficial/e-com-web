@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tabs button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px;
+            color: #007bff;
+        }
+        .tabs button.active {
+            border-bottom: 2px solid #007bff;
+            font-weight: bold;
+        }
+        .form-container {
+            display: none;
+        }
+        .form-container.active {
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button id="loginTab">Login</button>
+            <button id="signupTab" class="active">Signup</button>
+        </div>
+        <form id="loginForm" class="form-container" action="/login" method="post">
+            <h2>Login Your Account</h2>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <a href="#">Forgot password?</a>
+            <button type="submit" style="margin-top: 10px;">Login</button>
+            <p>Not a member? <a href="#" id="switchToSignup">Signup now</a></p>
+        </form>
+        <form id="signupForm" class="form-container active" action="/register" method="post">
+            <span style="display: flex; flex-direction: row; text-align: start; gap: 10px;"><h2 >Welcome To </h2> <h2 style="color: blue;"> Scatch</h2></span><h4 style="margin-top: -16px; text-align: start;">Create Your Account</h4>
+            <input type="text" name="fullname" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Signup</button>
+            <p>Already a member? <a href="#" id="switchToLogin">Login</a></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginTab').addEventListener('click', function() {
+            switchForm('login');
+        });
+
+        document.getElementById('signupTab').addEventListener('click', function() {
+            switchForm('signup');
+        });
+
+        document.getElementById('switchToSignup').addEventListener('click', function(event) {
+            event.preventDefault();
+            switchForm('signup');
+        });
+
+        document.getElementById('switchToLogin').addEventListener('click', function(event) {
+            event.preventDefault();
+            switchForm('login');
+        });
+
+        function switchForm(formType) {
+            if (formType === 'login') {
+                document.getElementById('loginForm').classList.add('active');
+                document.getElementById('signupForm').classList.remove('active');
+                document.getElementById('loginTab').classList.add('active');
+                document.getElementById('signupTab').classList.remove('active');
+            } else if (formType === 'signup') {
+                document.getElementById('signupForm').classList.add('active');
+                document.getElementById('loginForm').classList.remove('active');
+                document.getElementById('signupTab').classList.add('active');
+                document.getElementById('loginTab').classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
