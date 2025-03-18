@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Signup Form</title>
     <style>
-        body {
+    .navbar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .navigations{
+            a{
+                text-decoration: none;
+                color: rgb(150, 104, 35);
+            }
+        }
+
+        .main{
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             display: flex;
@@ -74,6 +89,17 @@
     </style>
 </head>
 <body>
+    <section class="navbar"> 
+        <img src="../images/Scatch_Transparent.png" alt="Logo" width="100px">
+        <% if(isLoggedIn){ %>
+        <ul class="navigations">
+            <a href="/">Home</a>
+            <a href="/shop">Shop</a>
+            <a href="/cart">Cart</a>
+        </ul>
+        <%}%>
+    </section>
+    <div class="main">
     <div class="container">
         <div class="tabs">
             <button id="loginTab">Login</button>
@@ -96,7 +122,7 @@
             <p>Already a member? <a href="#" id="switchToLogin">Login</a></p>
         </form>
     </div>
-
+</div>
     <script>
         document.getElementById('loginTab').addEventListener('click', function() {
             switchForm('login');

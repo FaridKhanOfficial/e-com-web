@@ -42,7 +42,7 @@ module.exports.loginUser = async function (req, res){
             if (result) {
                 const token = generateToken(user);
                 res.cookie("token", token);
-                return res.send("Logged In"); // Ensure response is sent only once
+                return res.redirect('/shop'); // Ensure response is sent only once
             }
             return res.send("Email or Password Is Incorrect"); // Add return here
         });     

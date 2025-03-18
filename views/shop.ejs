@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        padding: 20px;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        padding-right: 20px;
+      }
+
+      .sidebar h3,
+      .sidebar p {
+        margin-bottom: 10px;
+      }
+
+      select,
+      .filter-options {
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      /* Product Grid */
+      .product-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 0.2fr));
+        gap: 15px;
+        flex: 1;
+      }
+
+      .product-card {
+        background: #f5f5f5;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+      }
+
+      .product-image {
+        height: 200px;
+      }
+
+      .product-details {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .add-to-cart {
+        background: white;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #d9534f;
+        cursor: pointer;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          padding-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .product-container {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+      }
+
+      .navbar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-between;
+        padding: 20px;
+      }
+
+      .navigations {
+        display: flex;
+        gap: 20px;
+        a {
+          text-decoration: none;
+          color: rgb(150, 104, 35);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="navbar">
+      <img src="../images/Scatch_Transparent.png" alt="Logo" width="100px" />
+      <ul class="navigations">
+        <a href="/">Home</a>
+        <a href="/shop">Shop</a>
+        <a href="/cart">Cart</a>
+        <a href="/logout" style="color: red">Logout</a>
+      </ul>
+    </section>
+    <div style="display: flex">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h3>Sort By</h3>
+        <select>
+          <option>Popular</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+        </select>
+
+        <h3>Filter by:</h3>
+        <p class="filter-options">Availability</p>
+        <p class="filter-options">Discount</p>
+      </aside>
+
+      <!-- Product Grid -->
+      <section class="product-container">
+        <% if(products.length > 0){ %> <% products.forEach( function (product){
+        %>
+
+        <div class="product-card">
+          <div
+            class="product-image"
+            style="background-color: <%= product.bgcolor %>"
+          >
+            <img
+              src="data:image/jpeg;base64, <%= product.image.toString('base64') %>"
+              alt=""
+              style="width: 100%; height: 100%"
+            />
+          </div>
+          <div
+            class="product-details"
+            style="background-color: <%= product.panelcolor %>"
+          >
+            <span style="color: <%= product.textcolor %>"
+              ><%= product.name %> <br /><br /><span
+                style="display: flex; gap: 10px; align-items: center"
+                >₹<%= product.price %>
+                <p
+                  style="
+                    background-color: #f5f5f5;
+                    width: 70px;
+                    padding: 5px;
+                    border-radius: 20px;
+                  "
+                >
+                  %<%= product.discount %>
+                </p></span
+              ></span
+            >
+            <a href="/addtocart/<%= product._id %>"
+              ><button class="add-to-cart">+</button></a
+            >
+          </div>
+        </div>
+
+        <% }) %> <% } else { %>
+        <h1>No Products Found</h1>
+        <% } %>
+      </section>
+    </div>
+    /
+  </body>
+</html>

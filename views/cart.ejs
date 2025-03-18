@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.cart {
+    margin: 20px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.item-name {
+    flex: 1;
+}
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.item-price {
+    margin-left: 20px;
+}
+
+.special-instructions {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.summary {
+    margin-top: 20px;
+}
+
+.summary h3 {
+    margin-bottom: 10px;
+}
+
+.checkout-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkout-button:hover {
+    background-color: #45a049;
+}
+.navbar{
+             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .navigations{
+            display: flex;
+            gap: 20px;
+            a{
+                text-decoration: none;
+                color: rgb(150, 104, 35);
+            }
+        }
+    </style>
+</head>
+<body>
+
+        <section class="navbar"> 
+            <img src="../images/Scatch_Transparent.png" alt="Logo" width="100px">
+            <ul class="navigations">
+                <a href="/">Home</a>
+                    <a href="/shop">Shop</a>
+                    <a href="/cart">Cart</a>
+                    <a href="/logout" style="color: red;">Logout</a>
+        
+                </ul>
+            </section>
+            
+       
+        <div class="container">
+
+    <div class="cart">
+        <h2>Shopping Cart</h2>
+        <p>Your cart is saved for the next <strong>4m 34s</strong></p>
+        <% products.forEach(function(product){ %>
+
+        <div class="cart-item">
+            <img width="150px" src="data:image/jpeg;base64, <%= product.image.toString('base64') %>" alt="<%= product.name %> ">
+            <div class="item-details">
+                <h3><%= product.name %></h3>
+                <p>Min / 5</p>
+                <div class="item-controls">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                    <span>1 x <%= product.price %></span>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+
+        <div class="special-instruction">
+            <p>Special instructions for seller</p>
+        </div>
+
+        <div class="summary">
+            <h3>Summary</h3>
+            <p>Subtotal: $150.00</p>
+            <p>Shipping: $20.00</p>
+            <p><strong>Total: USD $170.00</strong></p>
+            <input type="text" placeholder="Enter coupon code here">
+            <button class="checkout">Check Out</button>
+        </div>
+    </div>
+</body>
+</html>

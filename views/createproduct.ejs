@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .color-options {
+            display: flex;
+            gap: 5px;
+        }
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+        .image-upload {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .image-preview {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="/products/create" method="post" enctype="multipart/form-data">
+            <h2>Product Details</h2>
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="product_name" placeholder="Enter product name">
+            </div>
+            <div class="form-group">
+                <label>Product Price</label>
+                <input type="number" name="product_price" placeholder="Enter product price">
+
+            </div>
+            <div class="form-group">
+                <label>Discount Price</label>
+                <input type="number" name="discount_price" placeholder="Enter discount price">
+            </div> 
+            <div class="form-group">
+                <label>Upload an image</label>
+                <div class="image-upload">
+                    <input type="file" name="product_image">
+                </div>
+            </div>
+            <h2>Panel Details</h2>
+            <div class="form-group">
+                <label>Background Color</label>
+                <input type="color" name="bg_color">
+            </div>
+            <div class="form-group">
+                <label>Panel Color</label>
+                <input type="color" name="panel_color">
+            </div>
+            <div class="form-group">
+                <label>Text Color</label>
+                <input type="color" name="text_color">
+            </div>
+            <button class="button" type="submit">Continue</button>
+        </form>
+    </div>
+</body>
+</html>

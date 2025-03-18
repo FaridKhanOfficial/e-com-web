@@ -4,14 +4,14 @@ const userSchema = new mongoose.Schema({
   fullname: String,
   email: String,
   password: String,
-  cart: {
-    type: Array,
+  cart: [{
+    type: mongoose.Schema.Types.ObjectId,
     default: []
-  },
-  orders: {
-    type: Array,
+}],
+  orders: [{
+    type: mongoose.Schema.Types.ObjectId,
     default: []
-  },
+  }],
   contact: Number,
   picture: String,
 });
